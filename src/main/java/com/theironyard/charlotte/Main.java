@@ -17,7 +17,7 @@ public class Main {
 //    The number 6 is a truly great number. Given two int values, a and b, return true if either one is 6.
 //    Or if their sum or difference is 6. Note: the function Math.abs(num) computes the absolute value of a number.
 
-    public boolean love6(int a, int b) {
+    public static boolean love6(int a, int b) {
         if (a == 6 || b == 6) {
             return true;
         } else if ((a + b) == 6 || (a -b) == 6) {
@@ -31,7 +31,7 @@ public class Main {
 
 //    Return true if the given non-negative number is 1 or 2 more than a multiple of 20.
 
-    public boolean more20(int n) {
+    public static boolean more20(int n) {
         if (n >= 20 && (n % 20 == 1 || n % 20 == 2)) {
             return true;
         }
@@ -42,6 +42,7 @@ public class Main {
 
     public static boolean nearTen(int num) {
         int r = num % 10;
+
         if (r <= 2) {
             return true;
         }
@@ -50,9 +51,11 @@ public class Main {
 
 //    Given a string of even length, return the first half. So the string "WooHoo" yields "Woo".
 
-    public String firstHalf(String input) {
-        int subString = (input.length() / 2);
-        String answer = input.substring(0, subString);
+    public static String firstHalf(String input) {
+        int subStringLength = (input.length() / 2);
+
+        String answer = input.substring(0, subStringLength);
+
         return answer;
     }
 
@@ -60,7 +63,9 @@ public class Main {
 
     public static String nonStart(String a, String b) {
         String firstWord = a.substring(1, a.length());
+
         String secondWord = b.substring(1, b.length());
+
         return firstWord + secondWord;
     }
 
@@ -71,7 +76,7 @@ public class Main {
 //    theEnd("Hello", false) → "o"
 //    theEnd("oh", true) → "o"
 
-    public String theEnd(String input, boolean front) {
+    public static String theEnd(String input, boolean front) {
         if (front == true) {
             return input.substring(0, 1);
         }
@@ -80,8 +85,9 @@ public class Main {
 
 //    Given a string, return true if it ends in "ly".
 
-    public boolean endsLy(String input) {
+    public static boolean endsLy(String input) {
         String lastTwo = input.substring(input.length() - 2, input.length());
+
         if (lastTwo.equalsIgnoreCase("ly")) {
             return true;
         }
@@ -93,7 +99,9 @@ public class Main {
 
     public static String middleThree(String input) {
         int middle = input.length() / 2;
+
         String middleLetters = input.substring(middle - 1, middle +2);
+
         return middleLetters;
     }
 
@@ -102,8 +110,11 @@ public class Main {
 
     public static String lastChars(String a, String b) {
         String firstChar = a.substring(0, 1);
+
         String lastChar = b.substring(b.length() - 1, b.length());
+
         String mashup = firstChar + lastChar;
+
         return mashup;
     }
 
@@ -112,8 +123,11 @@ public class Main {
 
     public static String seeColor(String input) {
         String red = "red";
+
         String blue = "blue";
+
         String zippy = "";
+
         if (input.startsWith("red")) {
             return red;
         }
@@ -128,10 +142,12 @@ public class Main {
 //    Given three ints, a b c, return true if two or more of them have the same rightmost digit.
 //    The ints are non-negative
 
-    public boolean lastDigit(int a, int b, int c) {
-        int lastA = a % 10;
-        int lastB = b % 10;
-        int lastC = c % 10;
+    public static boolean lastDigit(int a, int b, int c) {
+        int lastA = Math.abs(a % 10);
+
+        int lastB = Math.abs(b % 10);
+
+        int lastC = Math.abs(c % 10);
 
         if (lastA == lastB || lastA == lastC || lastB == lastC) {
             return true;
@@ -143,7 +159,7 @@ public class Main {
 //    However if the two values have the same remainder when divided by 5, then the return the smaller value.
 //    However, in all cases, if the two values are the same, return 0
 
-    public int maxMod5(int a, int b) {
+    public static int maxMod5(int a, int b) {
         if (a == b) {
             return 0;
         } else if (a % 5 == b % 5) {
@@ -160,11 +176,12 @@ public class Main {
 //    and big bricks (5 inches each). Return true if it is possible to make the goal by choosing from the given bricks.
 //    This is a little harder than it looks and can be done without any loops.
 
-    public boolean makeBricks(int small, int big, int goal) {
+    public static boolean makeBricks(int small, int big, int goal) {
         int bigBrick = 5;
+
         int firstStep = goal % (big * bigBrick);
 
-        if (firstStep == small) {
+        if (firstStep <= small) {
             return true;
         }
         else {
@@ -175,10 +192,10 @@ public class Main {
 //    Given 2 int values greater than 0, return whichever value is nearest to 21 without going over.
 //    Return 0 if they both go over.
 
-    public int blackjack(int a, int b) {
+    public static int blackjack(int a, int b) {
         int highNumber = Integer.max(a, b);
         if (a > 21 && b > 21) {
-            System.out.println("Both Bust!");
+            return 0;
         }
         else if (highNumber > 21) {
             return Integer.min(a, b);
@@ -189,7 +206,7 @@ public class Main {
 //    Given 3 int values, a b c, return their sum.
 //    However, if one of the values is the same as another of the values, it does not count towards the sum.
 
-    public int loneSum(int a, int b, int c) {
+    public static int loneSum(int a, int b, int c) {
 
         if (a == b && b == c) {
             return 0;
@@ -214,8 +231,9 @@ public class Main {
 //    To avoid code repetition, write a separate helper "public int round10(int num) {" and call it 3 times.
 //    Write the helper entirely below and at the same indent level as roundSum().
 
-    public int round10(int num) {
+    public static int roundTen(int num) {
         int remainder = num % 10;
+
         if (remainder >= 5) {
             int roundUp = num + (10 - remainder);
             return roundUp;
@@ -226,8 +244,9 @@ public class Main {
         }
     }
 
-    public int roundSum(int a, int b, int c) {
-        int answer = (round10(a) + round10(b) + round10(c));
+    public static int roundSum(int a, int b, int c) {
+        int answer = (roundTen(a) + roundTen(b) + roundTen(c));
+
         return answer;
     }
 
@@ -237,7 +256,7 @@ public class Main {
 //    In this way, you avoid repeating the teen code 3 times (i.e. "decomposition").
 //    Define the helper below and at the same indent level as the main noTeenSum().
 
-    public int fixTeen(int n) {
+    public static int fixTeen(int n) {
         if ((n == 13 || n == 14) || (n>= 17 && n <= 19)) {
             n = 0;
             return Integer.valueOf(n);
@@ -247,7 +266,7 @@ public class Main {
         }
     }
 
-    public int noTeenSum(int a, int b, int c) {
+    public static int noTeenSum(int a, int b, int c) {
         int answer = (fixTeen(a) + fixTeen(b) + fixTeen(c));
         return answer;
     }
@@ -255,7 +274,7 @@ public class Main {
 //    Given three ints, a b c, one of them is small, one is medium and one is large. Return true if the three values are
 //    evenly spaced, so the difference between small and medium is the same as the difference between medium and large
 
-    public boolean evenlySpaced(int a, int b, int c) {
+    public static boolean evenlySpaced(int a, int b, int c) {
         int[] spaced = {a, b, c};
         Arrays.sort(spaced, 0, 3);
         int firstDiff = spaced[1] - spaced [0];
@@ -270,7 +289,7 @@ public class Main {
 //    then it does not count towards the sum and values to its right do not count. So for example,
 //    if b is 13, then both b and c do not count.
 
-    public int luckySum(int a, int b, int c) {
+    public static int luckySum(int a, int b, int c) {
         if (a == 13) {
             return 0;
         }
@@ -309,14 +328,29 @@ public class Main {
         return remainder;
     }
 
+//    Given a string, return a string where for every char in the original, there are two chars.
 
+    public static String doubleChar(String input) {
+        String newString = new String();
+        for (int i = 0; i < input.length(); i++) {
 
+        }
+        return newString;
+    }
 
+//    Return the number of times that the string "code" appears anywhere in the given string,
+//    except we'll accept any letter for the 'd', so "cope" and "cooe" count.
 
+    public static int countCode(String input) {
 
+        int count = 0;
+        for (int i = 0; i < input.length() - 3; i++)
+            if (input.substring(i, (i + 2)).equals("co") && input.charAt(i + 3) == 'e') {
+                count++;
 
-
-
+            }
+        return count;
+    }
 
 
 
