@@ -9,9 +9,6 @@ public class Main {
 
     public static void main(String[] args) {
 	// write your code here
-        System.out.println();
-
-
 
     }
 //    The number 6 is a truly great number. Given two int values, a and b, return true if either one is 6.
@@ -169,7 +166,7 @@ public class Main {
             return Integer.max(a, b);
         }
     }
-//    This starts med diff logic
+//    This starts med diff
 
 
 //    We want to make a row of bricks that is goal inches long. We have a number of small bricks (1 inch each)
@@ -232,16 +229,13 @@ public class Main {
 //    Write the helper entirely below and at the same indent level as roundSum().
 
     public static int roundTen(int num) {
-        int remainder = num % 10;
+        double decimal = (double)num/10;
 
-        if (remainder >= 5) {
-            int roundUp = num + (10 - remainder);
-            return roundUp;
-        }
-        else {
-            int roundDown = num - remainder;
-            return roundDown;
-        }
+        double rounded = Math.round(decimal);
+
+        int finalValue = (int)rounded * 10;
+
+        return finalValue;
     }
 
     public static int roundSum(int a, int b, int c) {
@@ -276,9 +270,13 @@ public class Main {
 
     public static boolean evenlySpaced(int a, int b, int c) {
         int[] spaced = {a, b, c};
+
         Arrays.sort(spaced, 0, 3);
+
         int firstDiff = spaced[1] - spaced [0];
+
         int secondDiff = spaced[2] - spaced [1];
+
         if (firstDiff == secondDiff) {
             return true;
         }
@@ -318,24 +316,15 @@ public class Main {
 
 //    We want make a package of goal kilos of chocolate. We have small bars (1 kilo each) and big bars (5 kilos each).
 //    Return the number of small bars to use, assuming we always use big bars before small bars. Return -1 if it can't be done.
-//    I thought this was worded terribly.  I'm assuming that if you use no small bars that = it can't be done?
+
 
     public static int makeChocolate(int small, int big, int goal) {
-        int remainder = goal % 5;
-        if (remainder == 0) {
+        int remainder = goal - (5 * big);
+
+        if (remainder > small) {
             return -1;
         }
         return remainder;
-    }
-
-//    Given a string, return a string where for every char in the original, there are two chars.
-
-    public static String doubleChar(String input) {
-        String newString = new String();
-        for (int i = 0; i < input.length(); i++) {
-
-        }
-        return newString;
     }
 
 //    Return the number of times that the string "code" appears anywhere in the given string,
@@ -345,15 +334,10 @@ public class Main {
 
         int count = 0;
         for (int i = 0; i < input.length() - 3; i++)
+
             if (input.substring(i, (i + 2)).equals("co") && input.charAt(i + 3) == 'e') {
                 count++;
-
             }
         return count;
     }
-
-
-
-
-
 }
